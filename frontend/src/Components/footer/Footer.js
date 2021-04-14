@@ -8,7 +8,7 @@ export function Footer() {
     return (
         <div id="FooterBar">
             <footer class="FooterBar">
-                <p>some text</p>
+                <p>Brian Cariddi - Tyler Krasny - Ryan Wigglesworth</p>
             </footer>
         </div>
     );

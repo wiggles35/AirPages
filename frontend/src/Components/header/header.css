@@ -14,7 +14,7 @@
 
 .title {
     padding-left: 30px;
-    flex-basis: 65%;
+    flex-basis: 80%;
 }
 
 .TitleButton {
@@ -25,4 +25,8 @@
     font-size: 35px;
     font-family: "Carter One";
     margin: 20px
+}
+
+.searchComponent{
+    flex-basis: 20%;
 }

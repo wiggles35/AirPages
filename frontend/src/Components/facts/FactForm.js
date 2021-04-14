@@ -4,7 +4,6 @@ import "./facts.css"
 const FactForm = ({ user, onChange, onSubmit }) => {
     return (
         <div className="factForm">
-            <br />
             <form onSubmit={onSubmit} autoComplete="off">
                 <div className="form-group">
                     <label>First Name</label>

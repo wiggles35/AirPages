@@ -31,6 +31,7 @@ const Facts = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         setAdd(true);
+        alert("here")
     };
 
 
