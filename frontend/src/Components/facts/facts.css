@@ -1,0 +1,15 @@
+.factForm {
+    text-align:center;
+}
+
+.button{
+    background-color: white;
+    font-size: 25px;
+    border: 1px solid black;
+    font-family: "Oswald";
+    border-radius: 10px;
+}
+
+.button:hover{
+    background-color: #00b4d8;
+}
