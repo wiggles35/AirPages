@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+#HeaderBar {
+    display: flex;
+    flex-direction: row;
+    margin-top: -10px;
+    margin-right: -20px;
+    margin-left: -20px;
+    background-color: #00b4d8;
+    font-family: "Oswald";
+    align-items: center;
+}
+
+.title {
+    padding-left: 30px;
+    flex-basis: 65%;
+}
+
+.TitleButton {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 35px;
+    font-family: "Carter One";
+    margin: 20px
+}
