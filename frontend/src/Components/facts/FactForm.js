@@ -12,9 +12,9 @@ const FactForm = ({ user, onChange, onSubmit }) => {
                         type="text"
                         className="form-control"
                         id="first-name-input"
-                        value={user.firstName}
+                        value={user.first_name}
                         onChange={onChange}
-                        name="firstName"
+                        name="first_name"
                         required
                     />
                 </div>
@@ -25,9 +25,9 @@ const FactForm = ({ user, onChange, onSubmit }) => {
                         type="text"
                         className="form-control"
                         id="last-name-input"
-                        value={user.lastName}
+                        value={user.last_name}
                         onChange={onChange}
-                        name="lastName"
+                        name="last_name"
                         required
                     />
                 </div>{" "}
@@ -41,6 +41,19 @@ const FactForm = ({ user, onChange, onSubmit }) => {
                         value={user.email}
                         onChange={onChange}
                         name="email"
+                        required
+                    />
+                </div>{" "}
+                <div className="form-group">
+                    <label>Address</label>
+                    <br />
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="address-input"
+                        value={user.address}
+                        onChange={onChange}
+                        name="address"
                         required
                     />
                 </div>{" "}

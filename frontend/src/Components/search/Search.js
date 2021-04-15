@@ -9,11 +9,16 @@ export function Search() {
     const [add, setAdd] = useState(false);
 
     useEffect(() => {
-        var url = "ENDPOINT PATH HERE" + query
-        axios.get(url).then((response) => {
-            alert(response.data);
-        });
-    }, [query, add]);
+        if (add){
+            var url = "http://db.cse.nd.edu:5004/api/user/" + query + "/"
+            axios.get(url).then((response) => {
+                alert(JSON.stringify(response.data));
+            }).catch ((error) => {
+                alert(error)
+            });
+        }
+        setAdd(false);
+    }, [add, query]);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
