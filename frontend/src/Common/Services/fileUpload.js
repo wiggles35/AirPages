@@ -14,9 +14,17 @@ export function FileUpload(){
     const handleSubmission = () => {
         const formData = new FormData();
 
-        formData.append('File', selectedFile);
-        alert("HERE")
-        axios.post("ENDPOINT HERE", formData)
+        var url = "http://db.cse.nd.edu:5004/api/posting/"
+
+        axios.post(
+            url,
+            {"user":"1","image_link":"https://images.idgesg.net/images/idge/imported/imageapi/2019/07/26/15/cloud_istock_harnnarong-100803439-large.jpg"},
+            {
+                headers:{'Content-Type': 'application/json'}
+            }).then((response) => {
+        }).catch((error) => {
+            alert(JSON.stringify(error.response.data))
+        });
     };
 
     return (

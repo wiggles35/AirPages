@@ -6,8 +6,9 @@ import axios from 'axios';
 const Facts = () => {
     const [user, setUser] = useState({
         email: "",
-        firstname: "",
-        lastname: "",
+        first_name: "",
+        last_name: "",
+        address: ""
     });
 
     // flags in the state to watch for add/remove updates
@@ -15,7 +16,18 @@ const Facts = () => {
 
     // useEffect that run when changes are made to the state variable flags
     useEffect(() => {
-        axios.post("ENDPOINT HERE", JSON.stringify({user}))
+        if (add) {
+            var url = "http://db.cse.nd.edu:5004/api/user/"
+            axios.post(
+                url,
+                JSON.stringify(user),{
+                    headers:{'Content-Type': 'application/json'}
+                }).then((response) => {
+            }).catch((error) => {
+                alert(JSON.stringify(error.response.data))
+            });
+        }
+        setAdd(false);
     }, [user, add]);
 
     const onChangeHandler = (e) => {
@@ -31,7 +43,6 @@ const Facts = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         setAdd(true);
-        alert("here")
     };
 
 
