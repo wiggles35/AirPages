@@ -14,8 +14,9 @@ export function FileUpload(){
     const handleSubmission = () => {
         const formData = new FormData();
 
-        var url = "http://db.cse.nd.edu:5004/api/posting/"
+        var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/posting/"
 
+        //TODO: Integrate S3 here
         axios.post(
             url,
             {"user":"1","image_link":"https://images.idgesg.net/images/idge/imported/imageapi/2019/07/26/15/cloud_istock_harnnarong-100803439-large.jpg"},
