@@ -17,7 +17,7 @@ const Facts = () => {
     // useEffect that run when changes are made to the state variable flags
     useEffect(() => {
         if (add) {
-            var url = "http://db.cse.nd.edu:5004/api/user/"
+            var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/user/"
             axios.post(
                 url,
                 JSON.stringify(user),{

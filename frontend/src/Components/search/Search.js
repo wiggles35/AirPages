@@ -10,11 +10,11 @@ export function Search() {
 
     useEffect(() => {
         if (add){
-            var url = "http://db.cse.nd.edu:5004/api/user/" + query + "/"
+            var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/user/" + query + "/"
             axios.get(url).then((response) => {
                 alert(JSON.stringify(response.data));
             }).catch ((error) => {
-                alert(error)
+                alert(error.response)
             });
         }
         setAdd(false);
