@@ -85,10 +85,10 @@ if 'ec2-user' in os.environ['USER']:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'airpage-db',
+            'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpage-db.cscufqcbqipu.us-east-1.rds.amazonaws.com',
+            'HOST': 'airpages-db-instance-1.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         }
     }
