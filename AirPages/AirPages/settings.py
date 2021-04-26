@@ -85,20 +85,55 @@ if 'ec2-user' in os.environ['USER']:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'airpage-db',
+            'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpage-db.cscufqcbqipu.us-east-1.rds.amazonaws.com',
+            'HOST': 'airpages-db-instance-1.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         }
+        'replica2': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'airpages',
+            'USER': 'rwiggles',
+            'PASSWORD': 'databases',
+            'HOST': 'airpages-db-read-replica-2.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'PORT': '3306',
+        }
+        'replica3': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'airpages',
+            'USER': 'rwiggles',
+            'PASSWORD': 'databases',
+            'HOST': 'airpages-db-read-replica-3.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'PORT': '3306',
+        }
+        'replica4': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'airpages',
+            'USER': 'rwiggles',
+            'PASSWORD': 'databases',
+            'HOST': 'airpages-db-read-replica-4.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'PORT': '3306',
+        }
+        'replica5': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'airpages',
+            'USER': 'rwiggles',
+            'PASSWORD': 'databases',
+            'HOST': 'airpages-db-read-replica-5.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'PORT': '3306',
+        }
+
     }
 else:
-    DATABASSES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+DATABASE_ROUTERS = ['customRouter’]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
