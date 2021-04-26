@@ -6,11 +6,13 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-s3": "^1.3.1",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1",
-    "axios": "^0.21.1"
+    "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "../node_modules/.bin/react-scripts start",
@@ -37,7 +39,12 @@
     ]
   },
   "devDependencies": {
+    "aws-sdk": "^2.888.0",
     "axios": "^0.21.1",
-    "react-router-dom": "^5.2.0"
+    "file-type": "^16.3.0",
+    "multiparty": "^4.2.2",
+    "react-aws-s3": "^1.5.0",
+    "react-router-dom": "^5.2.0",
+    "typescript": "^2.8.0"
   }
 }

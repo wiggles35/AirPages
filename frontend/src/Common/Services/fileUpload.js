@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import "./fileupload.css";
+import {uploadImage} from "./AWS";
 
 export function FileUpload(){
     const [selectedFile, setSelectedFile] = useState();
@@ -11,12 +12,13 @@ export function FileUpload(){
         setIsFilePicked(true);
     };
 
-    const handleSubmission = () => {
-        const formData = new FormData();
-
+    const handleSubmission = (event) => {
+        event.preventDefault();
         var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/posting/"
 
-        //TODO: Integrate S3 here
+        uploadImage(selectedFile);
+        alert('post file upload');
+        /*
         axios.post(
             url,
             {"user":"1","image_link":"https://images.idgesg.net/images/idge/imported/imageapi/2019/07/26/15/cloud_istock_harnnarong-100803439-large.jpg"},
@@ -26,6 +28,7 @@ export function FileUpload(){
         }).catch((error) => {
             alert(JSON.stringify(error.response.data))
         });
+         */
     };
 
     return (
