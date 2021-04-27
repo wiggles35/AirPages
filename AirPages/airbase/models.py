@@ -13,6 +13,6 @@ class User(models.Model):
 
 class Posting(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
-    image_link = models.URLField(blank=True, null=True)
+    image_link = models.CharField("Image link", max_length=240, blank=True, null=True)
     timestamp = models.DateField("Post Time", auto_now_add=True)
     facts = models.JSONField("facts", default=list, blank=True, null=True)
