@@ -28,10 +28,43 @@ export const uploadImage = (file) => {
 
     promise.then(
         function(data) {
-            alert("Successfully uploaded photo.");
+            alert(JSON.stringify(data))
         },
         function(err) {
             return alert("There was an error uploading your photo: ", err.message);
+        }
+    );
+}
+
+export const downloadImage = (acctID) => {
+    var albumBucketName = Env.S3_BUCKET;
+    var bucketRegion = Env.REGION;
+    var IdentityPoolId = Env.AWS_IDPOOL;
+
+    AWS.config.update({
+        region: bucketRegion,
+        credentials: new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: IdentityPoolId
+        })
+    });
+
+    const s3 = new AWS.S3();
+
+    var download = s3.getObject({
+        params: {
+            Bucket: albumBucketName,
+            Key: "ND1.jpg",
+        }
+    });
+
+    var promise = download.promise();
+
+    promise.then(
+        function(data) {
+            alert(JSON.stringify(data))
+        },
+        function(err) {
+            return alert("There was an error downloading your photo: ", err.message);
         }
     );
 }
