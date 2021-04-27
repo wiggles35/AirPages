@@ -42,20 +42,10 @@ export const downloadImage = (acctID) => {
     const s3 = new AWS.S3();
 
     var download = s3.getObject({
-        params: {
-            Bucket: albumBucketName,
-            Key: "ND1.jpg",
-        }
+        Bucket: albumBucketName,
+        Key: "ND1.JPG",
     });
 
-    var promise = download.promise();
-
-    promise.then(
-        function(data) {
-            alert(JSON.stringify(data))
-        },
-        function(err) {
-            return alert("There was an error downloading your photo: ", err.message);
-        }
-    );
+    return download.promise();
 }
+
