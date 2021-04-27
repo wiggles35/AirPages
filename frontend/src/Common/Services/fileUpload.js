@@ -14,21 +14,21 @@ export function FileUpload(){
 
     const handleSubmission = (event) => {
         event.preventDefault();
-        var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/posting/"
+        var url = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/posting/"
 
-        uploadImage(selectedFile);
-        alert('post file upload');
-        /*
-        axios.post(
-            url,
-            {"user":"1","image_link":"https://images.idgesg.net/images/idge/imported/imageapi/2019/07/26/15/cloud_istock_harnnarong-100803439-large.jpg"},
-            {
-                headers:{'Content-Type': 'application/json'}
-            }).then((response) => {
-        }).catch((error) => {
-            alert(JSON.stringify(error.response.data))
-        });
-         */
+        uploadImage(selectedFile).then( function(data){
+            axios.post(
+                url,
+                {"user":"1","image_link": data.Location},
+                {
+                    headers:{'Content-Type': 'application/json'}
+                }).then((response) => {
+                    alert("Uploaded successfully!")
+                }).catch((error) => {
+                    alert(JSON.stringify(error.response.data))
+                }
+                )}
+        )
     };
 
     return (

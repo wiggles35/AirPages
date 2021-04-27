@@ -24,16 +24,7 @@ export const uploadImage = (file) => {
         }
     });
 
-    var promise = upload.promise();
-
-    promise.then(
-        function(data) {
-            alert(JSON.stringify(data))
-        },
-        function(err) {
-            return alert("There was an error uploading your photo: ", err.message);
-        }
-    );
+    return upload.promise();
 }
 
 export const downloadImage = (acctID) => {
