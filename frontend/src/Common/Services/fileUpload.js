@@ -5,6 +5,7 @@ import {uploadImage} from "./AWS";
 
 export function FileUpload(){
     const [userID, setUserID] = useState();
+    const [fact, setFact] = useState();
     const [selectedFile, setSelectedFile] = useState();
     const [isFilePicked, setIsFilePicked] = useState(false);
 
@@ -17,6 +18,10 @@ export function FileUpload(){
         setUserID(event.target.value);
     };
 
+    const changeFactHandler = (event) => {
+        setFact(event.target.value);
+    };
+
     const handleSubmission = (event) => {
         event.preventDefault();
         var url = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/posting/"
@@ -25,7 +30,7 @@ export function FileUpload(){
         uploadImage(selectedFile).then( function(data){
             axios.post(
                 url,
-                {"user":userID,"image_link": data.Key},
+                {"user":userID,"image_link": data.Key,"fact": fact},
                 {
                     headers:{'Content-Type': 'application/json'}
                 }).then((response) => {
@@ -40,7 +45,13 @@ export function FileUpload(){
     return (
         <div>
             <div>
-                <input onChange={changeIDHandler} id="userID" placeholder="User ID" required/>
+                <label>User ID</label>
+                <br />
+                <input onChange={changeIDHandler} id="userID" required/>
+            </div>
+            <br />
+            <div>
+                <textarea onChange={changeFactHandler} id="fact" placeholder="(Optional) Enter a description" required/>
             </div>
             <br />
             <input id="file" type="file" name="file" onChange={changeHandler} className="inputfile"/>

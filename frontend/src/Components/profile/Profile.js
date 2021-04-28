@@ -32,7 +32,7 @@ export function UserPage(props) {
         axios.get(allPostsUrl).then((response) => {
             if (response.data){
                 response.data.forEach((post) => {
-                    loadImage(post.image_link, post.id)
+                    loadImage(post.image_link, post.id, post.fact)
                 })
             }
         }).catch ((error) => {
@@ -42,14 +42,15 @@ export function UserPage(props) {
     }, [allPostsUrl]);
 
     //TODO- will png work?
-    const loadImage = function(imageLink, id){
+    const loadImage = function(imageLink, id, fact){
         downloadImage(imageLink).then( function(data){
             const buffer = Buffer.from(data.Body)
             const base64ImageData = buffer.toString('base64');
             const imgSrc = "data:image/jpg;base64," + base64ImageData;
             const postObject = {
                 imgSrc: imgSrc,
-                post_id: id
+                post_id: id,
+                fact: fact
             }
             setPosts(posts => [...posts, postObject])
         })
@@ -65,10 +66,15 @@ export function UserPage(props) {
                 {address && <h1>Address: {address}</h1>}
                 <h1>Postings:</h1>
             </div>
-            {posts.map(post => {
+            {posts
+                .sort(({ post_id: previousID }, {post_id: currentID}) => previousID - currentID)
+                .map(post => {
                 return ([
                     <div className="postList">
-                        <h1 className="facts">Post ID: {post.post_id}</h1>
+                        <div className="facts">
+                            <h1>Post ID: {post.post_id}</h1>
+                            {post.fact && <h1>Post Description: {post.fact}</h1>}
+                        </div>
                         <img className="pictures" src={post.imgSrc} style={{height: 600, width: "auto"}}></img>
                     </div>
                 ]);
