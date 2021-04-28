@@ -27,7 +27,7 @@ export const uploadImage = (file) => {
     return upload.promise();
 }
 
-export const downloadImage = (acctID) => {
+export const downloadImage = (imageLinks) => {
     var albumBucketName = Env.S3_BUCKET;
     var bucketRegion = Env.REGION;
     var IdentityPoolId = Env.AWS_IDPOOL;
@@ -43,7 +43,7 @@ export const downloadImage = (acctID) => {
 
     var download = s3.getObject({
         Bucket: albumBucketName,
-        Key: "ND1.JPG",
+        Key: imageLinks,
     });
 
     return download.promise();

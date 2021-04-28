@@ -9,13 +9,12 @@ export function UserPage(props) {
     const [last_name, setLastName] = useState([]);
     const [email, setEmail] = useState([]);
     const [address, setAddress] = useState([]);
-    const [imageLink, setImageLink] = useState([]);
-    const [awsImg, setAwsImg] = useState([]);
+    const [imageLinks, setImageLinks] = useState([]);
+    const [awsImgs, setAwsImgs] = useState([]);
 
 
     var infoUrl = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/user/" + props.match.params.id + "/"
-    //var allPostsUrl = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/user/" + props.match.params.id + "/posting"
-    var allPostsUrl = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/posting/13"
+    var allPostsUrl = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/user/" + props.match.params.id + "/posting/"
 
     useEffect(() => {
         axios.get(infoUrl).then((response) => {
@@ -31,20 +30,30 @@ export function UserPage(props) {
 
     useEffect(() => {
         axios.get(allPostsUrl).then((response) => {
-            setImageLink(response.data.image_link);
+            if (response.data){
+                response.data.forEach((post) => {
+                    setImageLinks(imageLinks => [...imageLinks, post.image_link])
+                })
+            }
         }).catch ((error) => {
             alert(error.response)
         });
-    });
+    }, [allPostsUrl]);
 
     useEffect(() => {
-        downloadImage(1).then( function(data){
-            const buffer = Buffer.from(data.Body)
-            const base64ImageData = buffer.toString('base64');
-            const imgSrc = "data:image/jpg;base64," + base64ImageData;
-            setAwsImg(imgSrc)
-        })
-    }, [imageLink])
+        if (imageLinks.length > 0){
+            imageLinks.forEach((imageLink) => {
+                downloadImage(imageLink).then( function(data){
+                    const buffer = Buffer.from(data.Body)
+                    const base64ImageData = buffer.toString('base64');
+                    const imgSrc = "data:image/jpg;base64," + base64ImageData;
+                    if (!awsImgs.includes(imgSrc)) {
+                        setAwsImgs(awsImgs => [...awsImgs, imgSrc])
+                    }
+                })
+            })
+        }
+    }, [awsImgs, imageLinks])
 
     return (
         <div>
@@ -54,7 +63,9 @@ export function UserPage(props) {
             <h1>{last_name}</h1>
             <h1>{email}</h1>
             <h1>{address}</h1>
-            {imageLink && <img src={awsImg} style={{height: 600, width: "auto"}}></img>}
+            {awsImgs.map(imgSrc => {
+                return <img src={imgSrc} style={{height: 600, width: "auto"}}></img>
+            })}
         </div>
     );
 }
