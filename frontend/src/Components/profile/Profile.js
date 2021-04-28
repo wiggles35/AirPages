@@ -32,28 +32,24 @@ export function UserPage(props) {
         axios.get(allPostsUrl).then((response) => {
             if (response.data){
                 response.data.forEach((post) => {
-                    setImageLinks(imageLinks => [...imageLinks, post.image_link])
+                    loadImage(post.image_link)
                 })
             }
         }).catch ((error) => {
             alert(error.response)
         });
+
     }, [allPostsUrl]);
 
-    useEffect(() => {
-        if (imageLinks.length > 0){
-            imageLinks.forEach((imageLink) => {
-                downloadImage(imageLink).then( function(data){
-                    const buffer = Buffer.from(data.Body)
-                    const base64ImageData = buffer.toString('base64');
-                    const imgSrc = "data:image/jpg;base64," + base64ImageData;
-                    if (!awsImgs.includes(imgSrc)) {
-                        setAwsImgs(awsImgs => [...awsImgs, imgSrc])
-                    }
-                })
-            })
-        }
-    }, [awsImgs, imageLinks])
+    //TODO- will png work?
+    const loadImage = function(imageLink){
+        downloadImage(imageLink).then( function(data){
+            const buffer = Buffer.from(data.Body)
+            const base64ImageData = buffer.toString('base64');
+            const imgSrc = "data:image/jpg;base64," + base64ImageData;
+            setAwsImgs(awsImgs => [...awsImgs, imgSrc])
+        })
+    }
 
     return (
         <div>
