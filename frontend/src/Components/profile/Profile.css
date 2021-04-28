@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+
+.userinfo {
+    text-align: center;
+    font-family: "Oswald";
+}
+
+.postList {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(auto-fill, 650px);
+}
+
+.facts {
+    grid-column: 1;
+}
+
+.pictures {
+    grid-column: 2;
+}
