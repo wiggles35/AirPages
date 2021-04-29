@@ -41,7 +41,6 @@ export function UserPage(props) {
 
     }, [allPostsUrl]);
 
-    //TODO- will png work?
     const loadImage = function(imageLink, id, fact){
         downloadImage(imageLink).then( function(data){
             const buffer = Buffer.from(data.Body)
@@ -57,14 +56,14 @@ export function UserPage(props) {
     }
 
     return (
-        <div>
+        <main>
             <div className="userinfo">
-                <h1>User ID: {id}</h1>
-                {first_name && <h1>First Name: {first_name}</h1> }
-                {last_name && <h1>Last Name: {last_name}</h1>}
-                {email && <h1>Email: {email}</h1>}
-                {address && <h1>Address: {address}</h1>}
-                <h1>Postings:</h1>
+                <h1><span>{first_name} {last_name}   -   {email}   -   {address}</span></h1>
+                <br />
+                <br />
+                <hr className="divider"/>
+                <h1 className="postingHeader">Posts:</h1>
+                <hr className="divider"/>
             </div>
             {posts
                 .sort(({ post_id: previousID }, {post_id: currentID}) => previousID - currentID)
@@ -72,14 +71,14 @@ export function UserPage(props) {
                 return ([
                     <div className="postList">
                         <div className="facts">
-                            <h1>Post ID: {post.post_id}</h1>
-                            {post.fact && <h1>Post Description: {post.fact}</h1>}
+                            {post.fact ? <h2 className="postBody">{post.fact}</h2> : <h2 className="postBody">No description provided</h2>}
                         </div>
-                        <img className="pictures" src={post.imgSrc} style={{height: 600, width: "auto"}}></img>
-                    </div>
+                        <img className="pictures" src={post.imgSrc} style={{height: 400, width: "auto"}}></img>
+                    </div>,
+                    <hr className="divider"/>
                 ]);
             })}
-        </div>
+        </main>
     );
 }
 export default UserPage;
