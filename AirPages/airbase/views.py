@@ -11,7 +11,7 @@ from .serializers import *
 def posting_list(request):
     ''' This is the endpoint for getting all postings or creating a new posting '''
     if request.method == 'GET':
-        data = Posting.objects.all()[25:]
+        data = Posting.objects.all().order_by('-id')[:25]
 
         serializer = PostingSerializer(data, context={'request': request}, many=True)
 
@@ -30,7 +30,7 @@ def posting_list(request):
 def user_list(request):
     ''' This is the endpoint for getting or manipulating all users at once '''
     if request.method == 'GET':
-        data = User.objects.all()[25:]
+        data = User.objects.all().order_by('-id')[:25]
 
         serializer = UserSerializer(data, context={'request': request}, many=True)
 
@@ -86,7 +86,7 @@ def user_detail(request, pk):
 def posting_detail(request, pk):
     ''' This is the endpoint for getting a specific posting '''
     try:
-        posting = Posting.objects.get(pk=pk)[25:]
+        posting = Posting.objects.get(pk=pk).order_by('-id')[25:]
     except Posting.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
