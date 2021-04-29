@@ -96,7 +96,7 @@ if 'ec2-user' in os.environ['USER']:
             'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpages-db-read-replica-2.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'HOST': 'airpages-db-read-replica-2.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         },
         'replica3': {
@@ -104,7 +104,7 @@ if 'ec2-user' in os.environ['USER']:
             'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpages-db-read-replica-3.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'HOST': 'airpages-db-read-replica-3.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         },
         'replica4': {
@@ -112,7 +112,7 @@ if 'ec2-user' in os.environ['USER']:
             'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpages-db-read-replica-4.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'HOST': 'airpages-db-read-replica-4.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         },
         'replica5': {
@@ -120,12 +120,12 @@ if 'ec2-user' in os.environ['USER']:
             'NAME': 'airpages',
             'USER': 'rwiggles',
             'PASSWORD': 'databases',
-            'HOST': 'airpages-db-read-replica-5.czk0wah8t0bg.us-east-1.rds.amazonaws.comm',
+            'HOST': 'airpages-db-read-replica-5.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
         },
 
     }
-    DATABASE_ROUTERS = ['database_routers.customRouter']
+    DATABASE_ROUTERS = ['database_routers.CustomRouter']
 
 else:
     DATABASES = {
