@@ -125,6 +125,8 @@ if 'ec2-user' in os.environ['USER']:
         },
 
     }
+    DATABASE_ROUTERS = ['database_routers.customRouter']
+
 else:
     DATABASES = {
         'default': {
@@ -133,7 +135,6 @@ else:
         }
     }
 
-    DATABASE_ROUTERS = ['database_routers.customRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
