@@ -86,7 +86,7 @@ def user_detail(request, pk):
 def posting_detail(request, pk):
     ''' This is the endpoint for getting a specific posting '''
     try:
-        posting = Posting.objects.get(pk=pk).order_by('-id')[25:]
+        posting = Posting.objects.get(pk=pk)
     except Posting.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
