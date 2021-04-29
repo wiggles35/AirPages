@@ -17,12 +17,13 @@ const Facts = () => {
     // useEffect that run when changes are made to the state variable flags
     useEffect(() => {
         if (add) {
-            var url = "http://ec2-3-234-210-87.compute-1.amazonaws.com:8000/api/user/"
+            var url = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/user/"
             axios.post(
                 url,
                 JSON.stringify(user),{
                     headers:{'Content-Type': 'application/json'}
                 }).then((response) => {
+                    alert("User created successfully!")
             }).catch((error) => {
                 alert(JSON.stringify(error.response.data))
             });

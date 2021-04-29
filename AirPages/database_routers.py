@@ -5,7 +5,7 @@ class CustomRouter:
         """
         Return one of the replicas
         """
-        return random.choice(['replica_2', 'replica_3', 'replica_4', 'replica_5'])
+        return random.choice(['replica2', 'replica3', 'replica4', 'replica5'])
 
     def db_for_write(self, model, **hints):
         # Always return the default database
