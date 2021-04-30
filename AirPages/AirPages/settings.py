@@ -90,7 +90,7 @@ if 'ec2-user' in os.environ['USER']:
             'PASSWORD': 'databases',
             'HOST': 'airpages-db-instance-1.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
-            'CONN_MAX_AGE': 22,
+            'CONN_MAX_AGE': 20,
             },
         'replica2': {
             'ENGINE': 'django.db.backends.mysql',
@@ -99,7 +99,7 @@ if 'ec2-user' in os.environ['USER']:
             'PASSWORD': 'databases',
             'HOST': 'airpages-db-read-replica-2.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
-            'CONN_MAX_AGE': 22,
+            'CONN_MAX_AGE': 20,
         },
         'replica3': {
             'ENGINE': 'django.db.backends.mysql',
@@ -108,7 +108,7 @@ if 'ec2-user' in os.environ['USER']:
             'PASSWORD': 'databases',
             'HOST': 'airpages-db-read-replica-3.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
-            'CONN_MAX_AGE': 22,
+            'CONN_MAX_AGE': 20,
         },
         'replica4': {
             'ENGINE': 'django.db.backends.mysql',
@@ -117,7 +117,7 @@ if 'ec2-user' in os.environ['USER']:
             'PASSWORD': 'databases',
             'HOST': 'airpages-db-read-replica-4.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
-            'CONN_MAX_AGE': 22,
+            'CONN_MAX_AGE': 20,
         },
         'replica5': {
             'ENGINE': 'django.db.backends.mysql',
@@ -126,7 +126,7 @@ if 'ec2-user' in os.environ['USER']:
             'PASSWORD': 'databases',
             'HOST': 'airpages-db-read-replica-5.czk0wah8t0bg.us-east-1.rds.amazonaws.com',
             'PORT': '3306',
-            'CONN_MAX_AGE': 22,
+            'CONN_MAX_AGE': 20,
         },
 
     }
