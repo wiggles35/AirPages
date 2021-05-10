@@ -24,9 +24,12 @@
     cursor: pointer;
     font-size: 35px;
     font-family: "Carter One";
-    margin: 20px
+    margin: 20px;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 .searchComponent{
-    flex-basis: 20%;
+    flex-grow: 1;
+    position: absolute;
+    white-space: nowrap
 }

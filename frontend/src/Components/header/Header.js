@@ -2,6 +2,7 @@ import React from "react";
 import HeaderButton from "./HeaderButton.js";
 import { useHistory, Link} from "react-router-dom";
 import Search from "../search/Search.js"
+import FancySearch from "../../Common/Services/InstantSearch/instantsearch.js";
 
 import "./header.css"
 
@@ -16,10 +17,10 @@ export function Header() {
     // Header bar with title
     return (
         <div id="HeaderBar">
-            <header class="headerBar title">
+            <header className="headerBar title">
                 <HeaderButton onClick={onClickHandler()}/>
             </header>
-            <Search class="headerBar searchComponent"/>
+            <FancySearch className="headerBar searchComponent"/>
         </div>
     );
 };

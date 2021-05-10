@@ -8,6 +8,7 @@
     border: 1px solid black;
     font-family: "Oswald";
     border-radius: 10px;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 .button:hover{

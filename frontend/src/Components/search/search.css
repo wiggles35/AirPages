@@ -3,4 +3,5 @@
 .searchButton {
     font-size: 20px;
     font-family: "Oswald";
+    filter: drop-shadow(5px 5px 5px #222);
 }
