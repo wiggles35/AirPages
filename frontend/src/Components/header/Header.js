@@ -1,8 +1,7 @@
 import React from "react";
 import HeaderButton from "./HeaderButton.js";
-import { useHistory, Link} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Search from "../search/Search.js"
-import FancySearch from "../../Common/Services/InstantSearch/instantsearch.js";
 
 import "./header.css"
 
@@ -20,7 +19,7 @@ export function Header() {
             <header className="headerBar title">
                 <HeaderButton onClick={onClickHandler()}/>
             </header>
-            <FancySearch className="headerBar searchComponent"/>
+            <Search className="headerBar searchComponent"/>
         </div>
     );
 };

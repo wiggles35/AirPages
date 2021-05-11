@@ -58,6 +58,32 @@ const FactForm = ({ user, onChange, onSubmit }) => {
                     />
                 </div>{" "}
                 <div className="form-group">
+                    <label>Username</label>
+                    <br />
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="username-input"
+                        value={user.username}
+                        onChange={onChange}
+                        name="username"
+                        required
+                    />
+                </div>{" "}
+                <div className="form-group">
+                    <label>Password</label>
+                    <br />
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="password-input"
+                        value={user.password}
+                        onChange={onChange}
+                        name="password"
+                        required
+                    />
+                </div>{" "}
+                <div className="form-group">
                     <br />
                     <button type="submit" className="button" onSubmit={onSubmit}>
                         Submit

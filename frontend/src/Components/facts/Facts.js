@@ -8,7 +8,9 @@ const Facts = () => {
         email: "",
         first_name: "",
         last_name: "",
-        address: ""
+        address: "",
+        username: "",
+        password: ""
     });
 
     // flags in the state to watch for add/remove updates
