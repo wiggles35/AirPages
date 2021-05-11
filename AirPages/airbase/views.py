@@ -61,13 +61,21 @@ def user_posting_detail(request, pk):
 @api_view(['GET', 'PUT', 'DELETE'])
 def user_detail(request, pk):
     ''' This is the endpoint for getting a specific user '''
-    try:
-        user = User.objects.get(pk=pk)
-    except User.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    if pk.isnumeric():
+        try:
+            user = User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
+    else:
+        try:
+            if request.method != 'GET':
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            user = User.objects.filter(username__contains=pk)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = UserSerializer(user, context={'request': request})
+        serializer = UserSerializer(user, context={'request': request}, many=True)
         return Response(serializer.data)
 
     if request.method == 'PUT':
@@ -105,3 +113,14 @@ def posting_detail(request, pk):
         posting.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+@api_view(['POST'])
+def login(request):
+    ''' This is how you login '''
+    try:
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            user = User.objects.get(username=serializer.validated_data['username'], password=serializer.validated_data['password'])
+            return Response(status=status.HTTP_200_OK)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
