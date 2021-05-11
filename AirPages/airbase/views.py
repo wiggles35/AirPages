@@ -72,10 +72,12 @@ def user_detail(request, pk):
             if request.method != 'GET':
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             user = User.objects.filter(username__contains=pk)
+            serializer = UserSerializer(user, context={'request': request}, many=True)
+            return Response(serializer.data)
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = UserSerializer(user, context={'request': request}, many=True)
+        serializer = UserSerializer(user, context={'request': request})
         return Response(serializer.data)
 
     if request.method == 'PUT':
