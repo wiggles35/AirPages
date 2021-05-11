@@ -24,7 +24,7 @@ export function UserPage(props) {
             setEmail(response.data.email);
             setAddress(response.data.address);
         }).catch ((error) => {
-            alert(error.response)
+            alert(JSON.stringify(error))
         });
     });
 
@@ -36,7 +36,7 @@ export function UserPage(props) {
                 })
             }
         }).catch ((error) => {
-            alert(error.response)
+            alert(JSON.stringify(error))
         });
 
     }, [allPostsUrl]);
