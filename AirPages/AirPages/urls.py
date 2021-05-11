@@ -23,6 +23,7 @@ urlpatterns = [
     re_path(r'^api/posting/$', views.posting_list),
     re_path(r'^api/user/$', views.user_list),
     re_path(r'^api/user/([0-9]+)/posting/$', views.user_posting_detail),
-    re_path(r'^api/user/([0-9]+)/$', views.user_detail),
-    re_path(r'^api/posting/([0-9]+)', views.posting_detail),
+    re_path(r'^api/user/([0-9a-zA-Z]+)/$', views.user_detail),
+    re_path(r'^api/posting/([0-9]+)$', views.posting_detail),
+    re_path(r'^api/login/$', views.login),
 ]
