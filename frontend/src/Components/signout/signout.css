@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
 
-.authForm {
-    text-align:center;
-    font-size: 25px;
-    font-family: "Oswald";
-}
-
-.submitButton {
+.signoutButton {
     background-color: white;
     font-size: 25px;
     border: 1px solid black;

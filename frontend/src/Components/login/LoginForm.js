@@ -39,12 +39,12 @@ const LoginForm = ({ user, onChange, onSubmit }) => {
                 </div>
                 <br />
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
+                    <button type="submit" className="submitButton" onSubmit={onSubmit}>
                         Login
                     </button>
                 </div>
             </form>
-            <h3>Don't have an account? {Register}</h3>
+            <p>Don't have an account? {Register}</p>
         </div>
     );
 };

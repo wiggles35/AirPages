@@ -8,6 +8,8 @@ export function Homepage() {
         <main id="homepage" className="homepageContainer">
             <div className="pageFiles">
                 <h1>Create a post on AirPages</h1>
+                <hr></hr>
+                <br></br>
                 <FileUpload />
             </div>
         </main>

@@ -6,7 +6,7 @@ import { SignOut } from "../signout/signout.js"
 
 export function UserPage(props) {
 
-    const [id, setID] = useState([]);
+    const [id, setID] = useState("");
     const [first_name, setFirstName] = useState([]);
     const [last_name, setLastName] = useState([]);
     const [email, setEmail] = useState([]);
@@ -61,11 +61,13 @@ export function UserPage(props) {
             <div className="userinfo">
                 <h1><span>{first_name} {last_name}   -   {email}   -   {address}</span></h1>
                 <br />
+                { (localStorage.getItem("user").toString() === id.toString()) &&
+                    <SignOut />
+                }
                 <br />
                 <hr className="divider"/>
                 <h1 className="postingHeader">Posts:</h1>
                 <hr className="divider"/>
-                <SignOut />
             </div>
             {posts
                 .sort(({ post_id: previousID }, {post_id: currentID}) => previousID - currentID)

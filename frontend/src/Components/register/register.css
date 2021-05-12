@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+
 .registerForm {
     text-align:center;
+    font-size: 25px;
+    font-family: "Oswald";
 }
 
 .button{

@@ -47,12 +47,12 @@ export function FileUpload(){
     };
 
     return (
-        <div>
+        <form onSubmit={handleSubmission}>
             <div>
-                <textarea onChange={changeFactHandler} id="fact" placeholder="(Optional) Enter a description" required/>
+                <textarea rows="8" cols="40" className="descEntry" onChange={changeFactHandler} id="fact" placeholder="Enter a description" required/>
             </div>
             <br />
-            <input id="file" type="file" name="file" onChange={changeHandler} className="inputfile"/>
+            <input id="file" type="file" name="file" onChange={changeHandler} className="inputfile" required/>
             <label for="file">Upload a file</label>
             {isFilePicked ? (
                 <div>
@@ -68,9 +68,9 @@ export function FileUpload(){
                 <p>Select a file to show details</p>
             )}
             <div>
-                <button className="button" onClick={handleSubmission}>Submit</button>
+                <button type="submit" className="button" onSubmit={handleSubmission}>Submit</button>
             </div>
-        </div>
+        </form>
     );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./signout.css"
 
 export const SignOut = () => {
 
@@ -14,7 +15,7 @@ export const SignOut = () => {
 
     return(
         <div>
-            <button onClick={onClickHandler}>Sign Out</button>
+            <button className="signoutButton" onClick={onClickHandler}>Sign Out</button>
         </div>
     )
 
