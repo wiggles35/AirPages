@@ -6,6 +6,7 @@ from rest_framework import status
 
 from .models import Posting, User
 from .serializers import *
+from django.db.models import Q
 
 
 @api_view(['GET', 'POST'])
@@ -73,7 +74,7 @@ def user_detail(request, pk):
         try:
             if request.method != 'GET':
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            user = User.objects.filter(username__contains=pk)
+            user = User.objects.filter(Q(username__contains=pk) | Q(first_name__contains=pk))
             serializer = UserSerializer(user, context={'request': request}, many=True)
             return Response(serializer.data)
         except User.DoesNotExist:
