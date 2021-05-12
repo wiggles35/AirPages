@@ -12,7 +12,7 @@ from .serializers import *
 def posting_list(request):
     ''' This is the endpoint for getting all postings or creating a new posting '''
     if request.method == 'GET':
-        data = Posting.objects.all().order_by('-id')[:25]
+        data = Posting.objects.all().order_by('-id')[:10]
 
         serializer = PostingSerializer(data, context={'request': request}, many=True)
 
@@ -31,7 +31,7 @@ def posting_list(request):
 def user_list(request):
     ''' This is the endpoint for getting or manipulating all users at once '''
     if request.method == 'GET':
-        data = User.objects.all().order_by('-id')[:25]
+        data = User.objects.all().order_by('-id')[:10]
 
         serializer = UserSerializer(data, context={'request': request}, many=True)
 
@@ -51,7 +51,7 @@ def user_list(request):
 def user_posting_detail(request, pk):
     ''' This is the endpoint for getting or manipulating all postings for a specific user '''
     if request.method == 'GET':
-        data = Posting.objects.filter(user=pk) # This could be a query bottleneck?
+        data = Posting.objects.filter(user=pk).order_by('-id')[:10] # This could be a query bottleneck?
 
         serializer = PostingSerializer(data, context={'request': request}, many=True)
 
