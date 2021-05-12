@@ -1,9 +1,9 @@
 import React from "react";
-import "./facts.css"
+import "./register.css"
 
-const FactForm = ({ user, onChange, onSubmit }) => {
+const RegisterForm = ({ user, onChange, onSubmit }) => {
     return (
-        <div className="factForm">
+        <div className="registerForm">
             <form onSubmit={onSubmit} autoComplete="off">
                 <div className="form-group">
                     <label>First Name</label>
@@ -74,7 +74,7 @@ const FactForm = ({ user, onChange, onSubmit }) => {
                     <label>Password</label>
                     <br />
                     <input
-                        type="text"
+                        type="password"
                         className="form-control"
                         id="password-input"
                         value={user.password}
@@ -94,4 +94,4 @@ const FactForm = ({ user, onChange, onSubmit }) => {
     );
 };
 
-export default FactForm;
+export default RegisterForm;

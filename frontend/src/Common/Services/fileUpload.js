@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import "./fileupload.css";
 import {uploadImage} from "./AWS";
+import { useHistory } from "react-router-dom"
 
 export function FileUpload(){
-    const [userID, setUserID] = useState();
+    const history = useHistory();
     const [fact, setFact] = useState();
     const [selectedFile, setSelectedFile] = useState();
     const [isFilePicked, setIsFilePicked] = useState(false);
@@ -14,9 +15,6 @@ export function FileUpload(){
         setIsFilePicked(true);
     };
 
-    const changeIDHandler = (event) => {
-        setUserID(event.target.value);
-    };
 
     const changeFactHandler = (event) => {
         setFact(event.target.value);
@@ -25,31 +23,31 @@ export function FileUpload(){
     const handleSubmission = (event) => {
         event.preventDefault();
         var url = "http://Airpages-elb-1-895405985.us-east-1.elb.amazonaws.com:8000/api/posting/"
+        const userID = localStorage.getItem("user")
 
-        //TODO: Login system to generate user ID?
-        uploadImage(selectedFile).then( function(data){
-            axios.post(
-                url,
-                {"user":userID,"image_link": data.Key,"fact": fact},
-                {
-                    headers:{'Content-Type': 'application/json'}
-                }).then((response) => {
+        if (!userID){
+            alert("Please sign in before posting")
+            history.push("/login")
+        }
+        else{
+            uploadImage(selectedFile).then( function(data){
+                axios.post(
+                    url,
+                    {"user":userID,"image_link": data.Key,"fact": fact},
+                    {
+                        headers:{'Content-Type': 'application/json'}
+                    }).then((response) => {
                     alert("Uploaded successfully!")
                 }).catch((error) => {
-                    alert(JSON.stringify(error.response.data))
-                }
+                        alert(JSON.stringify(error.response.data))
+                    }
                 )}
-        )
+            )
+        }
     };
 
     return (
         <div>
-            <div>
-                <label>User ID</label>
-                <br />
-                <input onChange={changeIDHandler} id="userID" required/>
-            </div>
-            <br />
             <div>
                 <textarea onChange={changeFactHandler} id="fact" placeholder="(Optional) Enter a description" required/>
             </div>

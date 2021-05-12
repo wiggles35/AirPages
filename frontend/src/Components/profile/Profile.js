@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { downloadImage } from "../../Common/Services/AWS.js";
 import "./Profile.css"
+import { SignOut } from "../signout/signout.js"
 
 export function UserPage(props) {
 
@@ -64,6 +65,7 @@ export function UserPage(props) {
                 <hr className="divider"/>
                 <h1 className="postingHeader">Posts:</h1>
                 <hr className="divider"/>
+                <SignOut />
             </div>
             {posts
                 .sort(({ post_id: previousID }, {post_id: currentID}) => previousID - currentID)
