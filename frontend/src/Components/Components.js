@@ -3,6 +3,8 @@ import Header from "./header/Header.js";
 import Homepage from "./homepage/Homepage.js";
 import Footer from "./footer/Footer.js";
 import UserPage from "./profile/Profile.js";
+import Login from "./login/login.js";
+import AuthRegister from "./register/AuthRegister.js"
 import "../index.css";
 
 import {
@@ -20,9 +22,13 @@ const Components = () => {
                     <Route exact path="/">
                         <Homepage />
                     </Route>
-                    <Route>
-                        <Route path="/profile/:id" render={(props) => <UserPage {... props} />} />
+                    <Route exact path="/login">
+                        <Login />
                     </Route>
+                    <Route exact path="/register">
+                        <AuthRegister />
+                    </Route>
+                    <Route path="/profile/:id" render={(props) => <UserPage {... props} />} />
                 </Switch>
                 <Footer />
             </div>

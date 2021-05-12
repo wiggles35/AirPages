@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import FactForm from "./FactForm.js";
-import axios from 'axios';
+import RegisterForm from "./RegisterForm.js";
+import {useHistory} from "react-router-dom";
+import axios from "axios";
 
-
-const Facts = () => {
+const AuthRegister = () => {
     const [user, setUser] = useState({
         email: "",
         first_name: "",
@@ -12,6 +12,8 @@ const Facts = () => {
         username: "",
         password: ""
     });
+
+    const history = useHistory();
 
     // flags in the state to watch for add/remove updates
     const [add, setAdd] = useState(false);
@@ -25,7 +27,9 @@ const Facts = () => {
                 JSON.stringify(user),{
                     headers:{'Content-Type': 'application/json'}
                 }).then((response) => {
-                    alert("User created successfully!")
+                localStorage.setItem('user', response.data.user_id)
+                alert("Account created successfully")
+                history.push('/')
             }).catch((error) => {
                 alert(JSON.stringify(error.response.data))
             });
@@ -48,10 +52,11 @@ const Facts = () => {
         setAdd(true);
     };
 
+    //Check if signed in?
 
     return (
         <div>
-            <FactForm
+            <RegisterForm
                 user={user}
                 onChange={onChangeHandler}
                 onSubmit={onSubmitHandler}
@@ -60,4 +65,4 @@ const Facts = () => {
     );
 };
 
-export default Facts;
+export default AuthRegister;
