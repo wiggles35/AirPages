@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework import status
 
@@ -39,8 +40,9 @@ def user_list(request):
     elif request.method == 'POST':
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
+            saved_data = serializer.save()
+            response_data = {"user_id": saved_data.id}
+            return JsonResponse(response_data, status=status.HTTP_201_CREATED)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -123,6 +125,7 @@ def login(request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             user = User.objects.get(username=serializer.validated_data['username'], password=serializer.validated_data['password'])
-            return Response(status=status.HTTP_200_OK)
+            json_data = {"user_id": user.id}
+            return JsonResponse(json_data, status=status.HTTP_200_OK)
     except User.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
